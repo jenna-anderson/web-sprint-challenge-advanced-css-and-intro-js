@@ -244,7 +244,7 @@ Example born in 1901 and died in 1959 - included -- born in 1889 and died in 192
 If correct, the function should return ["Salvador Dali", "Frida Kahlo"]*/
 
 function get20s(array){
-  let artistsYears = JSON.parse(JSON.stringify(array)); //Googled this. Using the spread method was still changing the original array
+  let artistsYears = JSON.parse(JSON.stringify(array)); //Googled this. Using the spread method was still changing the original array which still passed the test but was messing up later functions
   // let artistsYears = [...array];
   let twentiethCentury = [];
     for(let i = 0; i < artistsYears.length; i++){
