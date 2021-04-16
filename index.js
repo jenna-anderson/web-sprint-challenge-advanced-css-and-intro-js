@@ -208,16 +208,17 @@ Practice accessing data above by console.log-ing following items:
 (no functions needed) */
 
 //(1) Name of the first artist (0th index) in the array
-
+console.log(artists[0].name);
 
 //(2) Bio of the third artist (2nd index) in the array 
-
+console.log(artists[2].bio);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 (no function needed) 
 There is a typo in your dataset 😱 The 9th artist, Vincent Van Gogh is currently Vincent Van Dough. Use an array method to fix this issue and console.log() to check your work. */
-
+artists[8].name = "Vincent Van Gogh";
+console.log(artists[8].name);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀  
@@ -228,11 +229,11 @@ There is a typo in your dataset 😱 The 9th artist, Vincent Van Gogh is current
  
  Example, if getArtistByIndex is invoked with the artists array and the number 0, it will return `the artist at index 0 is Amedeo Modigliani` */
 
-function getArtistByIndex(/*Your Code Here*/) {
-  /*Your Code Here*/
+function getArtistByIndex(array, index) {
+  return `the artist at index ${index} is ${array[index].name}`;
 }  
 
-
+console.log(getArtistByIndex(artists, 0));
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Use get20s to do the following: 
@@ -242,10 +243,21 @@ Use get20s to do the following:
 Example born in 1901 and died in 1959 - included -- born in 1889 and died in 1925 not included
 If correct, the function should return ["Salvador Dali", "Frida Kahlo"]*/
 
-function get20s(/*Your Code Here*/){
-  /*Your Code Here*/
+function get20s(array){
+  let artistsYears = JSON.parse(JSON.stringify(array)); //Googled this. Using the spread method was still changing the original array which still passed the test but was messing up later functions
+  // let artistsYears = [...array];
+  let twentiethCentury = [];
+    for(let i = 0; i < artistsYears.length; i++){
+      artistsYears[i].years = artistsYears[i].years.split(" "); //splits the years value into an array of strings so I can access each element in the array individually too change the years into numbers
+      artistsYears[i].years[0] = Number(artistsYears[i].years[0]); //changes the first year in the range into a number
+      artistsYears[i].years[2] = Number(artistsYears[i].years[2]); //changes the second year in the range into a number
+      if(artistsYears[i].years[0] >= 1900 && artistsYears[i].years[2] < 2000){
+        twentiethCentury.push(artistsYears[i].name);
+    }
+    }
+    return twentiethCentury;
 }
-
+console.log(get20s(artists));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -257,8 +269,9 @@ function get20s(/*Your Code Here*/){
  
  For example, if removeArtist is invoked with the artists array and the number 0, it will remove Amedeo Modigliani from our dataset and return the number 19. */
 
-function removeArtist(/*Your Code Here*/){
-   /*Your Code Here*/
+function removeArtist(array, index){
+   array.splice(index,1);
+   return array.length;
 }
    
 
@@ -278,11 +291,19 @@ Use addArtist to do the following:
 
 Example: addArtist(artists) should return the artists array with the above object added to the end of the array. */
 
-function addArtist(/*Your Code Here*/){
-    /*Your Code Here*/
+function addArtist(array){
+    const newEntry = {
+      "id": 20,
+      "name": "Jenna Anderson",
+      "years": "1997 - current day",
+      "genre": "Web Design",
+      "nationality": "American",
+      "bio": "I was born in Houston, TX but raised in Longmont, CO. I'm not sure if my dog loves me or peanut butter more."
+    }
+    array.push(newEntry);
+    return array;
   }
 
-  
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Use lotsOfArt to do the following: 
@@ -291,12 +312,18 @@ Use lotsOfArt to do the following:
 
 For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte", ... "Albrecht Dürer"]*/
 
-function lotsOfArt(/*Your Code Here*/){
-  /*Your Code Here*/
+function lotsOfArt(array){
+  let moreThanHundred = [];
+  for(let i = 0; i < array.length; i++){
+    if(array[i].paintings > 100){
+      moreThanHundred.push(array[i].name);
+    }
+  }
+  return moreThanHundred;
 }
 
 
-
+console.log(lotsOfArt(artists));
 
 // 🎨🎨 STRETCH 🎨🎨//
 /* 💪💪💪💪💪💪 STRETCH 1: 💪💪💪💪💪💪 
@@ -320,28 +347,73 @@ The function should console.log 50 chunks of HTML code that match the structure 
 
 ‼️ You do **NOT** need to get these to display on your page, but you can copy and paste the result into your HTML file if you'd like to see what that would look like. */
 
-function getHTML(/* Code here */){
+function getHTML(data){
 
-    /* Code here */
+    for(let key in data){
+      console.log(`<div id = "artist">\n<div class = "image">\n
+      img src = "${data.image}"\n</div>\n<div class = "name"\n
+      <a href = "${data.wikipedia}">${data.name}</a>\n</div>\n<div class="bio">${data.bio}</div>\n</div>`);
+    }
 
   }
-
+getHTML(artists);
 
 /* 💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪
 Create a function called `randomize` that takes a data array as an argument and returns a the same array in a randomized order. */
 
-function randomize(/* Code here */){
-
-    /* Code here */
-
+function randomize(array){
+    let randomArray = [];
+    for(let i = 0; i < array.length; i++){
+      if(!(randomArray.includes(array[i]))){ // trying to get rid of repeats...
+        randomArray.push(array[Math.floor(Math.random() * array.length)]);
+      }
+    }
+    return randomArray;
   }
+console.log(randomize(artists));
+
 
 
  /* 💪💪💪💪💪💪 STRETCH 3: 💪💪💪💪💪💪
  Use advanced array methods (.map, .reduce, .filer) to refactor your MVP code (create an array of all artists born in the 1900s with .filter, for example) */
 
- 
- 
+//task 4 using filter method
+
+ function get20sStretch3 (array){
+  let artistsYears = JSON.parse(JSON.stringify(array)); //Googled this. Using the spread method was still changing the original array
+  // let artistsYears = [...array];
+  let TwentyCentNames = [];
+  for(let i = 0; i < artistsYears.length; i++){
+    artistsYears[i].years = artistsYears[i].years.split(" ");
+    artistsYears[i].years[0] = Number(artistsYears[i].years[0]);
+    artistsYears[i].years[2] = Number(artistsYears[i].years[2]);
+    }
+    let twentiethCentury = artistsYears.filter(function(x) {
+      return x.years[0] >= 1900 && x.years[2] < 2000;
+    });
+    for(let i = 0; i < twentiethCentury.length; i++){ // to create an array of only the names of the artists
+       TwentyCentNames.push(twentiethCentury[i].name);
+    }
+    return TwentyCentNames;
+  }
+
+console.log(get20sStretch3(artists)); 
+
+
+//task 7 using filter method
+
+function lotsOfArtStretch(array){
+  let moreThanHundNames = []; //empty array to store the names of the artists after filtering 
+  let moreThanHundred = array.filter(function (x) {
+    return x.paintings > 100;
+  });
+    for(let i = 0; i < moreThanHundred.length; i++){ // to create an array of only the names of the artists
+      moreThanHundNames.push(moreThanHundred[i].name);
+  }
+  return moreThanHundNames;
+}
+
+ console.log(lotsOfArtStretch(artists));
  
  /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑*/
  function foo(){
