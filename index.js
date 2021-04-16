@@ -370,7 +370,7 @@ function randomize(array){
     }
     return randomArray;
   }
-// console.log(randomize(artists));
+console.log(randomize(artists));
 
 
 
@@ -398,6 +398,7 @@ function randomize(array){
   }
 
 console.log(get20sStretch3(artists)); 
+
 
 //task 7 using filter method
 
