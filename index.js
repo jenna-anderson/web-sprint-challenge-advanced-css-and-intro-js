@@ -377,6 +377,7 @@ function randomize(array){
  /* 💪💪💪💪💪💪 STRETCH 3: 💪💪💪💪💪💪
  Use advanced array methods (.map, .reduce, .filer) to refactor your MVP code (create an array of all artists born in the 1900s with .filter, for example) */
 
+//task 4 using filter method
 
  function get20sStretch3 (array){
   let artistsYears = JSON.parse(JSON.stringify(array)); //Googled this. Using the spread method was still changing the original array
@@ -398,7 +399,20 @@ function randomize(array){
 
 console.log(get20sStretch3(artists)); 
 
- 
+//task 7 using filter method
+
+function lotsOfArtStretch(array){
+  let moreThanHundNames = []; //empty array to store the names of the artists after filtering 
+  let moreThanHundred = array.filter(function (x) {
+    return x.paintings > 100;
+  });
+    for(let i = 0; i < moreThanHundred.length; i++){ // to create an array of only the names of the artists
+      moreThanHundNames.push(moreThanHundred[i].name);
+  }
+  return moreThanHundNames;
+}
+
+ console.log(lotsOfArtStretch(artists));
  
  /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑*/
  function foo(){
