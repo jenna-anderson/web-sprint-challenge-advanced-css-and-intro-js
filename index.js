@@ -347,19 +347,29 @@ The function should console.log 50 chunks of HTML code that match the structure 
 
 function getHTML(data){
 
-    /* Code here */
+    for(let key in data){
+      console.log(`<div id = "artist">\n<div class = "image">\n
+      img src = "${data.image}"\n</div>\n<div class = "name"\n
+      <a href = "${data.wikipedia}">${data.name}</a>\n</div>\n<div class="bio">${data.bio}</div>\n</div>`);
+    }
 
   }
-
+getHTML(artists);
 
 /* 💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪
 Create a function called `randomize` that takes a data array as an argument and returns a the same array in a randomized order. */
 
 function randomize(array){
-
-    /* Code here */
-
+    let randomArray = [];
+    for(let i = 0; i < array.length; i++){
+      if(!(randomArray.includes(array[i]))){ // trying to get rid of repeats...
+        randomArray.push(array[Math.floor(Math.random() * array.length)]);
+      }
+    }
+    return randomArray;
   }
+console.log(randomize(artists));
+
 
 
  /* 💪💪💪💪💪💪 STRETCH 3: 💪💪💪💪💪💪
