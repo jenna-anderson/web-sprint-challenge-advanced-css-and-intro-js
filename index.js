@@ -244,9 +244,18 @@ Example born in 1901 and died in 1959 - included -- born in 1889 and died in 192
 If correct, the function should return ["Salvador Dali", "Frida Kahlo"]*/
 
 function get20s(array){
-  
+  let twentiethCentury = [];
+    for(let i = 0; i < array.length; i++){
+      array[i].years = array[i].years.split(" ");
+      Number(array[i].years[0]);
+      Number(array[i].years[2]);
+      if(array[i].years[0] >= 1900 && array[i].years[2] < 2000){
+        twentiethCentury.push(array[i].name);
+    }
+    }
+    return twentiethCentury;
 }
-
+get20s(artists);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -301,12 +310,18 @@ Use lotsOfArt to do the following:
 
 For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte", ... "Albrecht Dürer"]*/
 
-function lotsOfArt(/*Your Code Here*/){
-  /*Your Code Here*/
+function lotsOfArt(array){
+  let moreThanHundred = [];
+  for(let i = 0; i < array.length; i++){
+    if(array[i].paintings > 100){
+      moreThanHundred.push(array[i].name);
+    }
+  }
+  return moreThanHundred;
 }
 
 
-
+console.log(lotsOfArt(artists));
 
 // 🎨🎨 STRETCH 🎨🎨//
 /* 💪💪💪💪💪💪 STRETCH 1: 💪💪💪💪💪💪 
