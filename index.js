@@ -244,18 +244,20 @@ Example born in 1901 and died in 1959 - included -- born in 1889 and died in 192
 If correct, the function should return ["Salvador Dali", "Frida Kahlo"]*/
 
 function get20s(array){
+  let artistsYears = JSON.parse(JSON.stringify(array)); //Googled this. Using the spread method was still changing the original array
+  // let artistsYears = [...array];
   let twentiethCentury = [];
-    for(let i = 0; i < array.length; i++){
-      array[i].years = array[i].years.split(" ");
-      Number(array[i].years[0]);
-      Number(array[i].years[2]);
-      if(array[i].years[0] >= 1900 && array[i].years[2] < 2000){
-        twentiethCentury.push(array[i].name);
+    for(let i = 0; i < artistsYears.length; i++){
+      artistsYears[i].years = artistsYears[i].years.split(" ");
+      artistsYears[i].years[0] = Number(artistsYears[i].years[0]);
+      artistsYears[i].years[2] = Number(artistsYears[i].years[2]);
+      if(artistsYears[i].years[0] >= 1900 && artistsYears[i].years[2] < 2000){
+        twentiethCentury.push(artistsYears[i].name);
     }
     }
     return twentiethCentury;
 }
-get20s(artists);
+console.log(get20s(artists));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -368,28 +370,33 @@ function randomize(array){
     }
     return randomArray;
   }
-console.log(randomize(artists));
+// console.log(randomize(artists));
 
 
 
  /* 💪💪💪💪💪💪 STRETCH 3: 💪💪💪💪💪💪
  Use advanced array methods (.map, .reduce, .filer) to refactor your MVP code (create an array of all artists born in the 1900s with .filter, for example) */
 
+// console.log(artists);
+
 //  function get20sStretch3 (array){
+//   let artistsYears = JSON.parse(JSON.stringify(array)); //Googled this. Using the spread method was still changing the original array
+//   // let artistsYears = [...array];
 //   let twentiethCentury = [];
-//     for(let i = 0; i < array.length; i++){
-//       array[i].years = array[i].years.split(" ");
-//       Number(array[i].years[0]);
-//       Number(array[i].years[2]);
-//     }
-//       twentiethCentury = array.filter(function(x) {
+//   for(let i = 0; i < artistsYears.length; i++){
+//     artistsYears[i].years = artistsYears[i].years.split(" ");
+//     artistsYears[i].years[0] = Number(artistsYears[i].years[0]);
+//     artistsYears[i].years[2] = Number(artistsYears[i].years[2]);
+// //   // for(let i = 0; i < array.length; i++){
+// //   //   array[i].years = array[i].years.split(" ");
+// //   //   Number(array[i].years[0]);
+// //   //   Number(array[i].years[2]);
+// //   //   }
+//       twentiethCentury = artistsYears.filter(function(x) {
 //         return x.years[0] >= 1900 && x.years[2] < 2000;
 //       })
-//       // if(array[i].years[0] >= 1900 && array[i].years[2] < 2000){
-//       //   twentiethCentury.push(array[i].name);
-//       return twentiethCentury;
 //     }
-
+//   }
 
 // console.log(get20sStretch3(artists));
 
