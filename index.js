@@ -248,9 +248,9 @@ function get20s(array){
   // let artistsYears = [...array];
   let twentiethCentury = [];
     for(let i = 0; i < artistsYears.length; i++){
-      artistsYears[i].years = artistsYears[i].years.split(" ");
-      artistsYears[i].years[0] = Number(artistsYears[i].years[0]);
-      artistsYears[i].years[2] = Number(artistsYears[i].years[2]);
+      artistsYears[i].years = artistsYears[i].years.split(" "); //splits the years value into an array of strings so I can access each element in the array individually too change the years into numbers
+      artistsYears[i].years[0] = Number(artistsYears[i].years[0]); //changes the first year in the range into a number
+      artistsYears[i].years[2] = Number(artistsYears[i].years[2]); //changes the second year in the range into a number
       if(artistsYears[i].years[0] >= 1900 && artistsYears[i].years[2] < 2000){
         twentiethCentury.push(artistsYears[i].name);
     }
@@ -377,28 +377,26 @@ function randomize(array){
  /* 💪💪💪💪💪💪 STRETCH 3: 💪💪💪💪💪💪
  Use advanced array methods (.map, .reduce, .filer) to refactor your MVP code (create an array of all artists born in the 1900s with .filter, for example) */
 
-// console.log(artists);
 
-//  function get20sStretch3 (array){
-//   let artistsYears = JSON.parse(JSON.stringify(array)); //Googled this. Using the spread method was still changing the original array
-//   // let artistsYears = [...array];
-//   let twentiethCentury = [];
-//   for(let i = 0; i < artistsYears.length; i++){
-//     artistsYears[i].years = artistsYears[i].years.split(" ");
-//     artistsYears[i].years[0] = Number(artistsYears[i].years[0]);
-//     artistsYears[i].years[2] = Number(artistsYears[i].years[2]);
-// //   // for(let i = 0; i < array.length; i++){
-// //   //   array[i].years = array[i].years.split(" ");
-// //   //   Number(array[i].years[0]);
-// //   //   Number(array[i].years[2]);
-// //   //   }
-//       twentiethCentury = artistsYears.filter(function(x) {
-//         return x.years[0] >= 1900 && x.years[2] < 2000;
-//       })
-//     }
-//   }
+ function get20sStretch3 (array){
+  let artistsYears = JSON.parse(JSON.stringify(array)); //Googled this. Using the spread method was still changing the original array
+  // let artistsYears = [...array];
+  let TwentyCentNames = [];
+  for(let i = 0; i < artistsYears.length; i++){
+    artistsYears[i].years = artistsYears[i].years.split(" ");
+    artistsYears[i].years[0] = Number(artistsYears[i].years[0]);
+    artistsYears[i].years[2] = Number(artistsYears[i].years[2]);
+    }
+    let twentiethCentury = artistsYears.filter(function(x) {
+      return x.years[0] >= 1900 && x.years[2] < 2000;
+    });
+    for(let i = 0; i < twentiethCentury.length; i++){ // to create an array of only the names of the artists
+       TwentyCentNames.push(twentiethCentury[i].name);
+    }
+    return TwentyCentNames;
+  }
 
-// console.log(get20sStretch3(artists));
+console.log(get20sStretch3(artists)); 
 
  
  
