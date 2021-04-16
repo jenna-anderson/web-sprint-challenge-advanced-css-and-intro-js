@@ -183,9 +183,11 @@ button:hover{
 }
     /* tablet */
     @media(max-width: 768px){
+        /* header */
         nav {
             width: 50%;
         }
+        /* artists section */
         .artists-container {
             flex-direction: column;
             align-items: center;
