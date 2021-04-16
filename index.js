@@ -375,7 +375,24 @@ console.log(randomize(artists));
  /* 💪💪💪💪💪💪 STRETCH 3: 💪💪💪💪💪💪
  Use advanced array methods (.map, .reduce, .filer) to refactor your MVP code (create an array of all artists born in the 1900s with .filter, for example) */
 
- 
+//  function get20sStretch3 (array){
+//   let twentiethCentury = [];
+//     for(let i = 0; i < array.length; i++){
+//       array[i].years = array[i].years.split(" ");
+//       Number(array[i].years[0]);
+//       Number(array[i].years[2]);
+//     }
+//       twentiethCentury = array.filter(function(x) {
+//         return x.years[0] >= 1900 && x.years[2] < 2000;
+//       })
+//       // if(array[i].years[0] >= 1900 && array[i].years[2] < 2000){
+//       //   twentiethCentury.push(array[i].name);
+//       return twentiethCentury;
+//     }
+
+
+// console.log(get20sStretch3(artists));
+
  
  
  /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑*/
