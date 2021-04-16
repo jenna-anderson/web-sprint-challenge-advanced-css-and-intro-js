@@ -180,5 +180,30 @@ button:hover{
         font-size: 1.6rem;        
     }
 
-    
 }
+    /* tablet */
+    @media(max-width: 768px){
+        nav {
+            width: 50%;
+        }
+        .artists-container {
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 15%;
+            width: 80%;
+        }
+        .artists-container div.artist {
+            width: 100%;
+        }
+        .artists-container img {
+            width: 60%;
+            height: auto;
+        }
+        .artists-container a {
+            font-size: 2rem;
+        }
+        .artists-container div.bio {
+            font-size: 1.6rem;        
+        }
+    }
+   
